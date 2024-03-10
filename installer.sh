@@ -3,12 +3,12 @@
 REPO="https://github.com/spacexmeowser/Ultroid.git"
 CURRENT_DIR="$(pwd)"
 ENV_FILE_PATH=".env"
-DIR="/root/spacexmeowser"
+DIR="/root/TeamUltroid"
 
 while [ $# -gt 0 ]; do
     case "$1" in
     --dir=*)
-        DIR="${1#*=}" || DIR="/root/spacexmeowser"
+        DIR="${1#*=}" || DIR="/root/TeamUltroid"
         ;;
     --branch=*)
         BRANCH="${1#*=}" || BRANCH="main"
@@ -143,6 +143,7 @@ install_requirements() {
     echo -e "\n\nInstalling requirements... "
     pip3 install -q --no-cache-dir -r $DIR/requirements.txt
     pip3 install -q -r $DIR/resources/startup/optional-requirements.txt
+    pip3 uninstall telegraph -y && pip3 install telegraph
 }
 
 railways_dep() {
